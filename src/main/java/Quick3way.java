@@ -4,7 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Quick3way {
-
+    public static void sort(Comparable[] a){
+        sort(a,0,a.length-1);
+    }
     private static void sort(Comparable[] a ,int low,int high) {
         if (high <= low)
             return;
