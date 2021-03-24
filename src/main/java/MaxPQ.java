@@ -1,10 +1,10 @@
-public class MaxPQ<key extends Comparable<Key>> {
+public class MaxPQ<T extends Comparable<T>> {
 
-    private Key[] pq ;
+    private T[] pq ;
     private int N = 0;
 
     public MaxPQ(int maxN){
-        pq = (Key[]) new Comparable[maxN+1];
+        pq = (T[]) new Comparable[maxN+1];
     }
 
     public boolean isEmpty(){
@@ -15,13 +15,13 @@ public class MaxPQ<key extends Comparable<Key>> {
         return  N;
     }
 
-    public void insert(Key v) {
+    public void insert(T v) {
         pq[++N] = v;
         swim(N);
     }
 
-    public Key delMax(){
-        Key max = pq[1];
+    public T delMax(){
+        T max = pq[1];
         exch(1,N--);
         pq[N+1] = null;
         sink(1);
@@ -33,7 +33,7 @@ public class MaxPQ<key extends Comparable<Key>> {
     }
 
     private void exch(int i,int j){
-        Key t = pq[i];
+        T t = pq[i];
         pq[i] = pq[j];
         pq[j] = t;
     }
@@ -56,7 +56,7 @@ public class MaxPQ<key extends Comparable<Key>> {
     }
 
     public static void main(String[] args){
-        MaxPQ[Integer] = new MaxPQ<Integer>(10);
+        MaxPQ<Integer> maxPQ = new MaxPQ<Integer>(10);
 
     }
 }

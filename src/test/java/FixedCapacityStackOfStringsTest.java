@@ -4,7 +4,8 @@ public class FixedCapacityStackOfStringsTest {
 
     @Test
     public void fixed_capacity_stack_string_test(){
-        FixedCapacityStackOfStrings s = new FixedCapacityStackOfStrings(100);
+        FixedCapacityStackOfStrings s;
+        s = new FixedCapacityStackOfStrings(10);
         String[] testStr = {
                 "to","be","or","not","to","be"," ","that","is"
         };
