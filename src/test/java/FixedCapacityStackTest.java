@@ -7,7 +7,7 @@ public class FixedCapacityStackTest{
 
     @Test
     public void create_fixed_CapacityStack_test(){
-        FixedCapacityStack<Integer> s = new FixedCapacityStack<>(10);
+        FixedCapacityStack<Integer> s = new FixedCapacityStack<Integer>(10);
 
         assertThat(s.size(),is(0));
         assertThat(s.isEmpty(),is(true));
@@ -15,7 +15,7 @@ public class FixedCapacityStackTest{
 
     @Test
     public void push_pop_fixed_CapacityStack_test(){
-        FixedCapacityStack<Integer> s = new FixedCapacityStack<>(10);
+        FixedCapacityStack<Integer> s = new FixedCapacityStack<Integer>(10);
 
         s.push(1);
         s.push(2);

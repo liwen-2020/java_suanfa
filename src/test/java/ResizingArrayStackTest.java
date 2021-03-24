@@ -7,7 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ResizingArrayStackTest {
     @Test
     public void create_ResizingArrayStack(){
-        ResizingArrayStack<Integer> s = new ResizingArrayStack<>();
+        ResizingArrayStack<Integer> s = new ResizingArrayStack<Integer>();
 
         assertThat(s.size(),is(0));
         assertThat(s.isEmpty(),is(true));
@@ -15,7 +15,7 @@ public class ResizingArrayStackTest {
 
     @Test
     public void push_pop_resizingArrayStack(){
-        ResizingArrayStack<Integer> s = new ResizingArrayStack<>();
+        ResizingArrayStack<Integer> s = new ResizingArrayStack<Integer>();
 
         s.push(1);
         s.push(2);
