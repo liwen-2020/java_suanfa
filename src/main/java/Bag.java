@@ -1,22 +1,18 @@
 import java.util.Iterator;
 
-public class Queue<Item> implements Iterable<Item>{
+public class Bag<Item> implements Iterable<Item>{
 
     @Override
     public Iterator<Item> iterator() {
         return null;
     }
 
-    Queue(){
+    Bag(){
 
     }
 
-    public void enqueue(Item item){
+    public void add(Item item){
 
-    }
-
-    public Item dequeue(){
-        return null;
     }
 
     public boolean isEmpty(){

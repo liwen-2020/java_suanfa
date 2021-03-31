@@ -9,29 +9,29 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
         return N == 0;
     }
 
-    public int size(){
+    public int size() {
         return N;
     }
 
-    private void resize(int max){
+    private void resize(int max) {
         Item[] temp = (Item[]) new Object[max];
-        for(int i = 0 ; i< N ; i++){
+        for (int i = 0; i < N; i++) {
             temp[i] = a[i];
         }
         a = temp;
     }
 
-    public void push(Item item){
-        if(N == a.length)
-            resize(2*a.length);
+    public void push(Item item) {
+        if (N == a.length)
+            resize(2 * a.length);
         a[N++] = item;
     }
 
-    public Item pop(){
+    public Item pop() {
         Item item = a[--N];
         a[N] = null; //避免对象游离
-        if(N >0 && N == a.length/4)
-            resize(a.length/2);
+        if (N > 0 && N == a.length / 4)
+            resize(a.length / 2);
         return item;
     }
 
@@ -41,11 +41,11 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
     }
 
     private class ReverseArrayIterator implements Iterator<Item> {
-        private  int i = N;
+        private int i = N;
 
         @Override
         public boolean hasNext() {
-            return i>0;
+            return i > 0;
         }
 
         @Override

@@ -1,35 +1,31 @@
 import javax.print.DocFlavor;
 import javax.validation.constraints.Null;
+import java.util.Iterator;
 
-public class Stack<Item>{
-    private Node first;
-    private int N;
+public class Stack<Item> implements Iterable<Item>{
 
-    private class Node{
-        Item item;
-        Node next;
-    }
+    Stack() {
 
-    public boolean isEmpty(){
-        return first == null;
-    }
-
-    public int size(){
-        return N;
     }
 
     public void push(Item item){
-        Node oldfirst = first;
-        first = new Node();
-        first.item = item;
-        first.next = oldfirst;
-        N++;
+
     }
 
     public Item pop(){
-        Item item = first.item;
-        first = first.next;
-        N--;
-        return item;
+        return null;
+    }
+
+    public boolean isEmpty(){
+        return false;
+    }
+
+    public int size(){
+        return  -1;
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return null;
     }
 }

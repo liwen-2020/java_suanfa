@@ -1,28 +1,32 @@
-import java.util.Scanner;
 import java.util.Stack;
 
 public class Evaluate {
-    public static void main(String[] args){
-        Stack<String> ops = new Stack<String>();
-        Stack<Double> vals = new Stack<Double>();
+    private Stack<String> ops = null;
+    private Stack<Double> vals = null;
 
+    public Evaluate(){
+       initEvaluate();
+    }
 
-        Scanner sc=new Scanner(System.in);
-        String str=null;
-        System.out.print("请输入任意字符:");
-        str=sc.nextLine();
+    public Evaluate(String expression){
+        initEvaluate();
+    }
 
-        String[] strArr = str.split(" ");
+    private void initEvaluate(){
+        ops = new Stack<String>();
+        vals = new Stack<Double>();
+    }
 
+    public void analysisOps(String expression){
 
+    }
 
+    public void analysisVals(String expression){
 
-        System.out.println("你输入的字符为:"+str);
+    }
 
-
-        for (String sstr: strArr) {
-            System.out.println(sstr);
-        }
+    public Double execute(){
+        return 0.0;
     }
 
 }

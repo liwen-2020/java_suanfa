@@ -4,23 +4,21 @@ public class FixedCapacityStackOfStringsTest {
 
     @Test
     public void fixed_capacity_stack_string_test(){
-
         FixedCapacityStackOfStrings s = new FixedCapacityStackOfStrings(10);
-
-
         String[] testStr = {
-                "to","be","or","not","to","be"," ","that","is"
+                "1","2","3","4","5","6","7","9","10"
         };
 
         for (String str:testStr) {
-            System.out.println(str);
             s.push(str);
+            System.out.print(str + " ");
         }
+        System.out.println();
 
+        System.out.println("----------------------------------------------------------------");
         while (!s.isEmpty()){
-            System.out.println(s.pop());
+            System.out.print(s.pop() + " ");
         }
-
-        System.out.println(s.size());
+        System.out.println();
     }
 }

@@ -1,5 +1,6 @@
 /**
  * 一种表示定容字符串栈的抽象数据类型
+ * 指定容量不支持迭代
  * FixedCapacityStackOfStrings(int cap)          创建一个容器为cap的空栈
  * void push(String item)                        添加一个字符串
  * String pop()                                  删除最近添加的字符串

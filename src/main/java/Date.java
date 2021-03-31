@@ -16,6 +16,27 @@ public class Date implements Comparable<Date>{
     public int year() {return year;}
 
     @Override
+    public String toString(){
+        return year() + "/" + month() + "/" + day();
+    }
+
+    @Override
+    public boolean equals(Object other){
+        if(this == other) return true;
+        if(other == null) return false;
+        if(this.getClass() != other.getClass())
+            return false;
+        Date that = (Date) other;
+        if(this.day != that.day)
+            return false;
+        if(this.month != that.month)
+            return false;
+        if(this.year != that.year)
+            return false;
+        return true;
+    }
+
+    @Override
     public int compareTo(@NotNull Date other) {
         if(this.year > other.year)
             return +1;
