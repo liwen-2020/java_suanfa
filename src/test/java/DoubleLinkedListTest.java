@@ -165,4 +165,146 @@ public class DoubleLinkedListTest {
         assertThat(linkedList.front(),is(new DoubleNode(2,three)));
         assertThat(linkedList.last(),is(new DoubleNode(four,1)));
     }
+
+    @Test
+    public void link_for_test(){
+        DoubleLinkedList<Integer> linkedList = new DoubleLinkedList<Integer>();
+
+        Node one = new DoubleNode(1);
+        Node two = new DoubleNode(2);
+        Node three = new DoubleNode(3);
+        Node four = new DoubleNode(4);
+
+        linkedList.insertLastAfter(one);
+        linkedList.insertLastAfter(two);
+        linkedList.insertLastAfter(three);
+        linkedList.insertLastAfter(four);
+
+        for(int i : linkedList){
+            System.out.println(i);
+        }
+    }
+
+    @Test
+    public void link_delete_last_after_test(){
+        DoubleLinkedList<Integer> linkedList = new DoubleLinkedList<Integer>();
+
+        Node one = new DoubleNode(1);
+        Node two = new DoubleNode(2);
+        Node three = new DoubleNode(3);
+        Node four = new DoubleNode(4);
+
+        linkedList.insertLastAfter(one);
+        linkedList.insertLastAfter(two);
+        linkedList.insertLastAfter(three);
+        linkedList.insertLastAfter(four);
+
+        linkedList.traverse();
+
+        Node result = linkedList.deleteLastAfter();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(3));
+        assertThat(linkedList.front(),is(new DoubleNode(1,two)));
+        assertThat(linkedList.last(),is(new DoubleNode(two,3)));
+        System.out.println(result.toString());
+        assertThat(result,is(new DoubleNode(4)));
+
+        result = linkedList.deleteLastAfter();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(2));
+        assertThat(linkedList.front(),is(new DoubleNode(1,two)));
+        assertThat(linkedList.last(),is(new DoubleNode(one,2)));
+        System.out.println(result.toString());
+        assertThat(result,is(new DoubleNode(3)));
+
+        result = linkedList.deleteLastAfter();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(1));
+        assertThat(linkedList.front(),is(new DoubleNode(1)));
+        assertThat(linkedList.last(),is(new DoubleNode(1)));
+        System.out.println(result.toString());
+        assertThat(result,is(new DoubleNode(2)));
+
+        result = linkedList.deleteLastAfter();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(0));
+        assertTrue(linkedList.front() == null);
+        assertTrue(linkedList.last() == null);
+        System.out.println(result.toString());
+        assertThat(result,is(new DoubleNode(1)));
+
+        result = linkedList.deleteLastAfter();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(0));
+        assertTrue(linkedList.front() == null);
+        assertTrue(linkedList.last() == null);
+        assertTrue(result == null );
+    }
+
+
+    @Test
+    public void link_delete_front_before_test(){
+        DoubleLinkedList<Integer> linkedList = new DoubleLinkedList<Integer>();
+
+        Node one = new DoubleNode(1);
+        Node two = new DoubleNode(2);
+        Node three = new DoubleNode(3);
+        Node four = new DoubleNode(4);
+
+        linkedList.insertFrontBefore(one);
+        linkedList.insertFrontBefore(two);
+        linkedList.insertFrontBefore(three);
+        linkedList.insertFrontBefore(four);
+
+        linkedList.traverse();
+
+        Node result = linkedList.deleteFrontBefore();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(3));
+        assertThat(linkedList.front(),is(new DoubleNode(3,two)));
+        assertThat(linkedList.last(),is(new DoubleNode(two,1)));
+        System.out.println(result.toString());
+        assertThat(result,is(new DoubleNode(4)));
+
+        result = linkedList.deleteFrontBefore();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(2));
+        assertThat(linkedList.front(),is(new DoubleNode(2,one)));
+        assertThat(linkedList.last(),is(new DoubleNode(two,1)));
+        System.out.println(result.toString());
+        assertThat(result,is(new DoubleNode(3)));
+
+        result = linkedList.deleteFrontBefore();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(1));
+        assertThat(linkedList.front(),is(new DoubleNode(1)));
+        assertThat(linkedList.last(),is(new DoubleNode(1)));
+        System.out.println(result.toString());
+        assertThat(result,is(new DoubleNode(2)));
+
+        result = linkedList.deleteFrontBefore();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(0));
+        assertTrue(linkedList.front() == null);
+        assertTrue(linkedList.last() == null);
+        System.out.println(result.toString());
+        assertThat(result,is(new DoubleNode(1)));
+
+        result = linkedList.deleteFrontBefore();
+
+        linkedList.traverse();
+        assertThat(linkedList.linkedListNumber(),is(0));
+        assertTrue(linkedList.front() == null);
+        assertTrue(linkedList.last() == null);
+        assertTrue(result == null );
+    }
 }

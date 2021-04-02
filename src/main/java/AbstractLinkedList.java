@@ -17,6 +17,8 @@ public abstract class AbstractLinkedList<Item>{
         }
         public void setLinkedListNumber(int Number) {linkedListNumber = Number;}
 
+        public int size() {return linkedListNumber;}
+
         public abstract void traverse();
 
         public abstract void insertFrontAfter(Node node);

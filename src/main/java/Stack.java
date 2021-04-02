@@ -1,31 +1,46 @@
-import javax.print.DocFlavor;
-import javax.validation.constraints.Null;
 import java.util.Iterator;
 
 public class Stack<Item> implements Iterable<Item>{
+    private LinkedList<Item> linkedList;
 
     Stack() {
-
+        this.linkedList = new LinkedList<Item>();
     }
 
     public void push(Item item){
-
+        linkedList.insertFrontBefore(new Node(item));
     }
 
-    public Item pop(){
-        return null;
+    public Node pop(){
+        return  linkedList.deleteFront();
     }
 
     public boolean isEmpty(){
-        return false;
+        return linkedList.linkedListNumber() == 0;
     }
 
     public int size(){
-        return  -1;
+        return  linkedList.linkedListNumber();
     }
 
     @Override
     public Iterator<Item> iterator() {
-        return null;
+        return new ListIterator();
+    }
+
+    private class ListIterator implements Iterator<Item>{
+        private Node current = linkedList.front();
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Item next() {
+            Item item = (Item) current.item();
+            current = current.next();
+            return item;
+        }
     }
 }

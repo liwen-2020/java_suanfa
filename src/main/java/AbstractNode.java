@@ -36,7 +36,7 @@ public abstract class AbstractNode<Item> {
 
     public abstract void addBefore(Node node) ;
 
-    public abstract void delete() ;
+    public abstract AbstractNode delete() ;
 
 }
 

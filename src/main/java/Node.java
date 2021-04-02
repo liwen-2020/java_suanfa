@@ -24,9 +24,12 @@ public class Node<Item> extends AbstractNode<Item> {
     public void addBefore(Node node){
         node.setNext(this);
     }
+
     @Override
-    public void delete(){
+    public Node delete(){
+        Node tmp = next();
         setNext(null);
+        return tmp;
     }
 
     @Override
