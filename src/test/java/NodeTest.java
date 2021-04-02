@@ -37,6 +37,18 @@ public class NodeTest {
     }
 
     @Test
+    public void node_delete_test(){
+        Node<Integer> one = new Node<Integer>(1);
+        Node<Integer> two = new Node<Integer>(2);
+
+        one.addAfter(two);
+
+        Node result = one.delete();
+        System.out.println(result.toString());
+        assertThat(result,is(new Node<Integer>(2)));
+    }
+
+    @Test
     public void node_add_delete_before_test(){
         Node<Integer> one = new Node<Integer>(1);
         Node<Integer> two = new Node<Integer>(2);

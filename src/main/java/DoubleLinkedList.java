@@ -1,4 +1,8 @@
-public class DoubleLinkedList<Item> extends AbstractLinkedList<Item> {
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Iterator;
+
+public class DoubleLinkedList<Item> extends AbstractLinkedList<Item> implements Iterable<Item> {
 
     public void traverse(){
         Node node = front();
@@ -46,8 +50,6 @@ public class DoubleLinkedList<Item> extends AbstractLinkedList<Item> {
         setLinkedListNumber(linkedListNumber()+1);
     }
 
-
-
     public void insertLastBefore(Node node) {
         if(last() == null) {
             setFront(node);
@@ -77,5 +79,59 @@ public class DoubleLinkedList<Item> extends AbstractLinkedList<Item> {
             setLast(node);
         }
         setLinkedListNumber(linkedListNumber()+1);
+    }
+
+    public Node deleteFrontBefore(){
+        Node tmp = front();
+        if(front() == last()){
+            setFront( null);
+            setLast( null);
+            setLinkedListNumber(0);
+        }else {
+            ((DoubleNode) front().next()).setPrevious(null);
+            setFront(front().next());
+
+            tmp.setNext(null);
+
+            setLinkedListNumber(linkedListNumber() - 1);
+        }
+        return tmp;
+    }
+
+    public Node deleteLastAfter(){
+
+        Node tmp = last();
+        if(front() == last()){
+            setFront(null);
+            setLast(null);
+            setLinkedListNumber(0);
+        }else {
+            ((DoubleNode) last()).Previous().setNext(null);
+            setLast(((DoubleNode) last()).Previous());
+            ((DoubleNode) tmp).setPrevious(null);
+            setLinkedListNumber(linkedListNumber() - 1);
+        }
+        return tmp;
+    }
+
+
+    @Override
+    public Iterator<Item> iterator() {
+        return new ListIterator();
+    }
+
+    private class ListIterator implements Iterator<Item> {
+        private Node current = front();
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Item next() {
+            Item item = (Item) current.item();
+            current = current.next();
+            return item;
+        }
     }
 }

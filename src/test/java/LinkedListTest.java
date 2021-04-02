@@ -126,4 +126,78 @@ public class LinkedListTest {
         assertThat(linkedList.last(),is(new Node(1)));
     }
 
+    @Test
+    public void link_front_delete_test(){
+        LinkedList<Integer> linkedList = new LinkedList<Integer>();
+        linkedList.traverse();
+
+        Node one = new Node(1);
+        linkedList.insertFrontBefore(one);
+
+        Node two = new Node(2);
+        linkedList.insertFrontBefore(two);
+
+        Node three = new Node(3);
+        linkedList.insertFrontBefore(three);
+
+        Node four = new Node(4);
+        linkedList.insertFrontBefore(four);
+
+        linkedList.traverse();
+
+        Node result = linkedList.deleteFront();
+        linkedList.traverse();
+
+        assertThat(linkedList.linkedListNumber(),is(3));
+        assertThat(linkedList.front(),is(new Node(3,two)));
+        assertThat(linkedList.last(),is(new Node(1)));
+        System.out.println(result.toString());
+        assertThat(result,is(new Node(4)));
+
+        result = linkedList.deleteFront();
+        linkedList.traverse();
+
+        assertThat(linkedList.linkedListNumber(),is(2));
+        assertThat(linkedList.front(),is(new Node(2,one)));
+        assertThat(linkedList.last(),is(new Node(1)));
+        System.out.println(result.toString());
+        assertThat(result,is(new Node(3)));
+
+        result = linkedList.deleteFront();
+        linkedList.traverse();
+
+        assertThat(linkedList.linkedListNumber(),is(1));
+        assertThat(linkedList.front(),is(new Node(1)));
+        assertThat(linkedList.last(),is(new Node(1)));
+        System.out.println(result.toString());
+        assertThat(result,is(new Node(2)));
+
+        result = linkedList.deleteFront();
+        linkedList.traverse();
+
+        assertThat(linkedList.linkedListNumber(),is(0));
+        assertTrue(linkedList.front() == null);
+        assertTrue(linkedList.last() == null);
+        System.out.println(result.toString());
+        assertThat(result,is(new Node(1)));
+
+        result = linkedList.deleteFront();
+        linkedList.traverse();
+
+        assertThat(linkedList.linkedListNumber(),is(0));
+        assertTrue(linkedList.front() == null);
+        assertTrue(linkedList.last() == null);
+        //System.out.println(result.toString());
+        assertTrue(result == null);
+
+        result = linkedList.deleteFront();
+        linkedList.traverse();
+
+        assertThat(linkedList.linkedListNumber(),is(0));
+        assertTrue(linkedList.front() == null);
+        assertTrue(linkedList.last() == null);
+        //System.out.println(result.toString());
+        assertTrue(result == null);
+    }
+
 }

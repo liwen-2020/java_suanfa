@@ -32,13 +32,13 @@ public class DoubleNode<Item> extends Node<Item>{
  
     public void setPrevious(Node node) {previous = node;}
 
-
     public void addAfter(Node node){
         setNext(node);
 
         DoubleNode tmp = (DoubleNode) node;
         tmp.setPrevious(this);
     }
+
     public void addBefore(Node node){
         node.setNext(this);
         this.previous = node;

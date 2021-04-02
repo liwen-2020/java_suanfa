@@ -1,6 +1,5 @@
 public class LinkedList<Item> extends AbstractLinkedList<Item> {
 
-
     public void traverse(){
         Node node = front();
         System.out.println("[N: " + linkedListNumber() +"]:");
@@ -54,6 +53,26 @@ public class LinkedList<Item> extends AbstractLinkedList<Item> {
     @Override
     public void insertLastBefore(Node node) {
 
+    }
+
+    public Node deleteFront() {
+        Node tmp = front();
+        if(linkedListNumber() == 0){
+            return null;
+        }
+
+        if(linkedListNumber() == 1){
+            setFront(null);
+            setLast(null);
+            setLinkedListNumber(linkedListNumber()-1);
+            return tmp;
+        }
+
+        setFront(front().next());
+        tmp.setNext(null);
+
+        setLinkedListNumber(linkedListNumber()-1);
+        return tmp;
     }
 
 
