@@ -4,9 +4,7 @@ import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertTrue;
 
-
 public class StackTest {
-
     @Test
     public void create_stack_test(){
         Stack<Integer> stack = new Stack<Integer>();

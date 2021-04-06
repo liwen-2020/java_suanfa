@@ -1,25 +1,12 @@
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class UFTest {
 
     @Test
     public void UF_test(){
         int N = 10;
-        Map<Integer, Integer> testData = new HashMap<Integer, Integer>();
-        testData.put(4,3);
-        testData.put(3,8);
-        testData.put(6,5);
-        testData.put(9,4);
-        testData.put(2,1);
-        testData.put(5,0);
-        testData.put(7,2);
-        testData.put(6,1);
-        testData.put(1,0);
-        testData.put(6,7);
 
         Integer[][] arr = new Integer[2][5];
 
@@ -167,41 +154,73 @@ public class UFTest {
             sarr[2][2*i] = arr[1][i].toString();
         }
 
-        for(int i =0 ;i <3 ;i++){
-            for (int j =0 ; j< 9;j++){
-                System.out.print(sarr[i][j]);
-            }
-            System.out.println();
-        }
 
-        Map<Integer, Integer> testData = new HashMap<Integer, Integer>();
-        testData.put(4,3);
-        testData.put(3,8);
-        testData.put(6,5);
-        testData.put(9,4);
-        testData.put(2,1);
-        testData.put(5,0);
-        testData.put(7,2);
-        testData.put(6,1);
-        testData.put(1,0);
-        testData.put(6,7);
+        List<String> list = new ArrayList<String>();
 
-        for(Integer integer : testData.keySet()){
-                int min = Math.min(integer, testData.get(integer));
-                int max = Math.max(integer, testData.get(integer));
+        list.add("4,3");
+        list.add("3,8");
+        list.add("6,5");
+        list.add("9,4");
+        list.add("2,1");
+        list.add("8,9");
+        list.add("5,0");
+        list.add("7,2");
+        list.add("6,1");
+        list.add("1,0");
+        list.add("6,7");
 
-                int front_first_index = min/5;
-                int last_first_index  = max/5;
+        for( String str: list){
+                int front = Integer.parseInt(str.substring(0,1));
+                int last = Integer.parseInt(str.substring(2,3));
+
+
+                int min = Math.min(front, last);
+                int max = Math.max(front, last);
+
+                int front_first_index = min/5== 0  ? 0:2;
+                int last_first_index  = max/5 == 0 ? 0:2;
                 int mid_first_index = (front_first_index + last_first_index)/2;
 
                 int front_second_index = 2*(min%5);
                 int last_second_index  = 2*(max%5);
                 int mid_second_index  = (front_second_index + last_second_index)/2;
 
-            System.out.println(front_first_index + "," + front_second_index + " " +
-                               mid_first_index   + "," + mid_second_index +  " " +
-                               last_first_index  + "," + last_second_index);
+            sarr[mid_first_index][mid_second_index] = "*";
         }
+
+        for(int i =0 ;i <3 ;i++){
+            for (int j =0 ; j< 9;j++){
+                System.out.print(sarr[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    @Test
+    public void UF_func_test(){
+        int N = 10;
+        UF uf = new UF(N);
+        uf.add("4,3");
+        uf.add("3,8");
+        uf.add("6,5");
+        uf.add("9,4");
+        uf.add("2,1");
+        uf.add("8,9");
+        uf.add("5,0");
+        uf.add("7,2");
+        uf.add("6,1");
+        uf.add("1,0");
+        uf.add("6,7");
+
+        for(String str :uf.list()){
+            int front = Integer.parseInt(str.substring(0,1));
+            int last = Integer.parseInt(str.substring(2,3));
+
+            if(uf.connected(front,last))
+                continue;
+            uf.union(front,last);
+        }
+        System.out.println(uf.count());
 
     }
 }
